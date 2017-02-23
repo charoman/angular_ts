@@ -8,6 +8,8 @@ appModule.component('tree', {
     }
 });
 
+appModule.directive('ng-con')
+
 function TreeComponent($rootScope) {
     this.$onInit = function () {
         console.log(this.fs);
