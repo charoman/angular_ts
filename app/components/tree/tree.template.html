@@ -1,1 +1,7 @@
-tree
+<div class="tree">
+    <input type="text" ng-model="$ctrl.text">
+    <ul>
+        <li ng-click="$ctrl.hideMe(folder)" ng-show="!folder.hide" ng-repeat="folder in $ctrl.fs">{{folder.name}}</li>
+    </ul>
+    <button ng-click="$ctrl.sendBroadcast()">send refresh</button>
+</div>

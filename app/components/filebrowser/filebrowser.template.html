@@ -1,0 +1,7 @@
+<button ng-click="$ctrl.addFolder()">Add</button>
+<input type="text" ng-model="$ctrl.textForContent">
+
+<div class="file-browser">
+    <tree fs="$ctrl.fs" text="$ctrl.textForContent"></tree>
+    <content text="$ctrl.textForContent"></content>
+</div>
