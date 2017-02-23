@@ -17,6 +17,10 @@ function TreeComponent($rootScope) {
         $rootScope.$broadcast('tree.refresh', 'this is id');
     }
 
+    this.contextMenu = function (folder) {
+        console.log(folder);
+    }
+
     this.hideMe = function (folder) {
         folder.hide = true;
     }
