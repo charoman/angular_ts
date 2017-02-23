@@ -8,9 +8,34 @@ appModule.component('tree', {
     }
 });
 
-appModule.directive('ng-con')
+appModule.component('menu', {
+    template: '<div ng-if="$ctrl.item">Menu of {{$ctrl.item.name}}</div>',
+    controller: function () {
 
-function TreeComponent($rootScope) {
+    },
+    bindings: {
+        item: '<'
+    }
+})
+
+appModule.directive('ngContextmenu', [function () {
+    return {
+        restrict: 'A',
+        scope: {
+            ngContextmenu: '&'
+        },
+        link: function (scope, element, attrs) {
+            element[0].addEventListener('contextmenu', function (e) {
+                console.log(attrs);
+                scope.ngContextmenu();
+                scope.$apply();
+                e.preventDefault();
+            });
+        }
+    }
+}]);
+
+function TreeComponent($rootScope, $scope) {
     this.$onInit = function () {
         console.log(this.fs);
     }
@@ -20,7 +45,7 @@ function TreeComponent($rootScope) {
     }
 
     this.contextMenu = function (folder) {
-        console.log(folder);
+        this.selectedFolder = folder;
     }
 
     this.hideMe = function (folder) {
